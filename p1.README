@@ -17,7 +17,7 @@ input: key value pair from tfRDD
     This function just do the reformating of the key  and value from ((word@document),(wordCount/docSize)) to (word,(1/document)), creates the ArrayList and adds the Tuple in it and return the ArrayList
 Reduce: Reduce implementation using reduceByKey
 input : key , list of values pair from Map function
-	This function reduces the key value by adding the numerators and concatinating all the denominator strings as mentioned in comment section above the idfRDD. i.e. from (word,(1/document)) to (word,(numDocsWithWord/document1,document2...) 
+	This function reduces the key value by adding the numerators and concatinating all the denominator strings as mentioned in comment section above the idfRDD. i.e. from (word,(1/document)) to  (word,(numDocsWithWord/document1,document2...) 
 Map: Map implementation using flatMapToPair
 input: key value pair from Reduce
     This function splits the value to seperate out the document array the iterate over the document loop, concatinate the word , @ and document create value using splitted numDocsWithWord and numDocs provided. This converst key value pair from (word,(numDocsWithWord/document1,document2...)) to ((word@document),(numDocs/numDocsWithWord));
@@ -27,6 +27,8 @@ tfFinalRDD:
 Map: Map implementation using mapToPair
 input: key value pair from idfRDD
     This function just calculate the TF from value. It just splits wordCount and docSize then calculate TF = wordCount/docSize. 
+
+
 idfFinalRDD
 Map: Map implementation using mapToPair
 input: key value pair from idfRDD
