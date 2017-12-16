@@ -1,6 +1,11 @@
-// lmokada Laxmikant Kishor Mokadam
-###############################################################################
+Run commands:
 
+javac TFIDF.java
+jar cf TFIDF.jar TFIDF*.class
+spark-submit --class TFIDF TFIDF.jar input &> spark_output.txt
+grep -v '^2017\|^(\|^-' spark_output.txt > output.txt
+
+Explanation:
 
 tfRDD :
 Map: Map implementation using flatMapToPair
